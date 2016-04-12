@@ -1,0 +1,338 @@
+%: Galaxies: overview of properties
+%
+%  Author:  Andrey Kravtsov
+%  Date  :  March 2015
+%
+%
+
+
+\chapter{Cosmological distances}
+\label{sec:cosmodistances}
+
+\noindent
+{\it Reading:} \citet{hogg99}\\[2mm]
+{\it More pedagogical reading:} Dodelson, "Modern cosmology" pp. 33-36, Mo, van den Bosch \& White ``Galaxy formation'', \S 3.1.1-3.1.4, 3.1.6\\[2mm]
+
+
+Distances are one of the most difficult quantities to measure in astronomy. Although a number of good methods, which constitute rungs of the {\it distance ladder} (e.g., see review by \citealt{freedman_madore10}  and an older but methodologically excellent review by \citealt{jacoby_etal92}), exists, such measurements are difficult to do for large numbers of galaxies identified and observed in modern galaxy surveys, especially at distances $>50-100\ \mathrm{Mpc}$. Therefore, most commonly the Hubble law \citep{hubble29} is exploited to convert redshift into distance. Redshifts for such measurements are usually measured from spectra of galaxies of suitable resolution. However, now increasingly the {\it photometric redshifts\/} are measured from broad band photometry of galaxies. These are not particularly accurate individually but can be used to measure an accurate redshift of a galaxy cluster or for problems where high distance accuracy is not critical. 
+
+A good collection of practical information about calculation of distances given a redshift of an object in expanding universe is provided by \citet[][see also Dodelson, "Modern cosmology" pp. 33-36]{hogg99}. What follows is a brief summary of the information relevant for galaxies that we will use lifted from that paper with minor modifications and addition of section on calculation of surface brightness by me. This info is for the standard $\Lambda$CDM cosmology, if you will ever need dark energy cosmology (with constant or varying $w$), you need S 2.1 and 2.2 in \citet{frieman_etal08}. 
+
+Expansion of the universe leads locally to the Hubble law scaling between the recession velocity, $v$, implied by the redshift of spectral lines in spectrum, $z=\lambda_{\rm obs}/\lambda_{\rm emm}-1$, and distance, $d$: 
+
+$$v=cz=H_0d,$$
+
+where the Hubble constant $H_0$ is the proportionality constant. This constant has units of inverse time and its inverse can be used to define expansion time scale called {\it the Hubble time}:
+\begin{equation}
+t_{\rm H}\equiv\frac{1}{H_0}= 9.78\times10^9\,h^{-1}~{\rm yr}= 3.09\times10^{17}\,h^{-1}~{\rm s}
+\end{equation}
+The speed of light $c$ times the Hubble time is the {\it Hubble
+distance} $D_{\rm H}$
+\begin{equation}
+D_{\rm H}\equiv\frac{c}{H_0}
+= 3000\,h^{-1}~{\rm Mpc}= 9.26\times10^{25}\,h^{-1}~{\rm m}
+\end{equation}
+
+The mass density $\rho_{\rm m}$ of the Universe and the value of the
+cosmological constant $\Lambda$ are dynamical properties of the
+Universe, affecting the time evolution of the metric.  They can be
+made into dimensionless density parameters $\Omega_{\rm M}$ and
+$\Omega_{\Lambda}$ by normalizing by the {\it critical density of the universe} that would be required to make it spatially flat:
+$$
+\Omega_{\rm M}\equiv\frac{8\pi\,G\,\rho_0}{3\,H_0^2}
+$$
+
+$$
+\Omega_{\Lambda}\equiv\frac{\Lambda\,c^2}{3\,H_0^2}
+$$
+(Peebles, 1993, pp. 310--313), where the subscripted zeroes indicate
+that the quantities (which in general evolve with time) are to be
+evaluated at the present epoch. The present-day value of the
+critical density $\Omega=1$ corresponds to $7.5\times
+10^{21}\,h^{-1}\,M_{\odot}\,D_{\mathrm{H}}^{-3}$, where $M_{\odot}$ is the
+mass of the Sun. Taking Milky Way galaxy total mass $M\sim 10^{12}\ M_{\odot}$ as representative, this correspounds to roughly ten billion galaxies in the Hubble volume (the actual number is somewhat different as not all mass is in galaxies). 
+
+
+A third density parameter $\Omega_k$
+measures the ``curvature of space'' and can be defined by the relation
+\begin{equation}
+\Omega_{\rm M}+\Omega_{\Lambda}+\Omega_k= 1
+\end{equation}
+These parameters completely determine the geometry of the Universe if
+it is homogeneous, isotropic, and matter-dominated, as will be assumed to be the case
+in our study of galaxies.  
+
+The best current estimates of these parameters from the CMB anisotropies, Baryonic Acoustic Oscillation feature in galaxy clustering, etc. can be found in this paper (although the precise values of some of the key parameters - e.g., $\Omega_{\rm m}$, $H_0$, and $\sigma_8$ are still under debate at the $\sim 5-10\%$ level, as different observational probes of these parameters are in tension with each other).
+
+In terms of cosmography, the cosmological redshift is directly related
+to the scale factor $a(t)$, or the ``size'' of the Universe.  For an
+object at redshift $z$
+\begin{equation}
+1+z = \frac{a(t_{\rm o})}{a(t_{\rm e})}
+\end{equation}
+where $a(t_{\rm o})$ is the size of the Universe at the time the light
+from the object is observed, and $a(t_{\rm e})$ is the size at the
+time it was emitted.
+
+There is usually a difference between an object's measured redshift $z_{\rm obs}$ and
+its {\it cosmological redshift\/} $z_{\rm cos}$ due purely to the expansion of the universe. 
+The difference is due to its (radial) {peculiar velocity\/} $v_{\rm pec}$; i.e,. we define the
+cosmological redshift as that part of the redshift due solely to the
+expansion of the Universe, or {\it Hubble flow.} The peculiar
+velocity is related to the redshift difference by
+\begin{equation}
+v_{\rm pec} = c\,\frac{(z_{\rm obs}-z_{\rm cos})}{(1+z)}
+\end{equation}
+where it was assumed $v_{\rm pec}\ll c$. To estimate $v_{\rm pec}$ requires distance measurement independent of redshift, which is difficult but possible for limited number of galaxies. Thus, there are studies that estimate peculiar velocity field of galaxies locally. However, for most galaxies in the survey like the SDSS independent measurements are not available. From here on, we
+assume $z=z_{\rm cos}$ when estimating distances. We should just keep in mind that in some cases we need to take into account the fact that redshift has two components to it, when we examine spatial distribution of galaxies in {\it redshift space}, as redshift derived distances will not correspond to the true spatial distances due to peculiar motions of galaxies relative to the uniformly expanding background. These motion lead to what's called {\it redshift space distorsions}. 
+
+\section{Comoving distance (line-of-sight)}
+
+A small {\em comoving distance\/} $\delta D_{\rm C}$ between two
+nearby objects in the Universe is the distance between them which
+remains constant with epoch if the two objects are moving with the
+Hubble flow. 
+The total line-of-sight comoving distance $D_{\rm C}$ from us to a
+distant object is computed by integrating the infinitesimal $\delta
+D_{\rm C}$ contributions between nearby events along the radial ray
+from $z=0$ to the object:
+\begin{equation}
+D_{\rm C} = D_{\rm H}\,\int_0^z\frac{dz'}{E(z')}
+\end{equation}
+where $D_{\rm H}$ is the Hubble distance defined above and $E(z)$ is dimensionless Hubble parameter:
+\begin{equation}
+E(z)\equiv H(z)/H_0=\sqrt{\Omega_{\rm M}\,(1+z)^3+\Omega_k\,(1+z)^2+\Omega_{\Lambda}}
+\end{equation}
+Given that $dz=da$, $dz/E(z)$ is proportional to the
+time-of-flight of a photon traveling across the redshift interval
+$dz$, divided by the scale factor at that time.  Since the speed of
+light is constant, this is a proper distance divided by the scale
+factor, which is the definition of a comoving distance. 
+
+The line-of-sight
+comoving distance between two nearby events (ie, close in redshift or
+distance) is the distance which we would measure locally between the
+events today if those two points were locked into the Hubble flow.  It
+is the correct distance measure for measuring aspects of large-scale
+structure imprinted on the Hubble flow, eg, distances between
+``walls.''
+
+\section{Angular diameter distance}
+
+The {\it angular diameter distance\/} $D_{\rm A}$ is defined as the
+ratio of an object's physical transverse size to its angular size (in
+radians).  It is used to convert angular separations in telescope
+images into proper separations at the source.  It is famous for not
+increasing indefinitely as $z\rightarrow\infty$; it turns over at
+$z\sim 1$ and thereafter more distant objects actually appear larger
+in angular size.  Angular diameter distance is related to the
+transverse comoving distance by
+\begin{equation}
+D_{\rm A} = \frac{D_{\rm M}}{1+z}, 
+\end{equation}
+
+where 
+\begin{equation}
+D_{\rm M} = \left\{
+\begin{array}{ll}
+D_{\rm H}\,\frac{1}{\sqrt{\Omega_k}}\,\sinh\left[\sqrt{\Omega_k}\,D_{\rm C}/D_{\rm H}\right] & {\rm for}~\Omega_k>0 \\
+D_{\rm C} & {\rm for}~\Omega_k=0 \\
+D_{\rm H}\,\frac{1}{\sqrt{|\Omega_k|}}\,\sin\left[\sqrt{|\Omega_k|}\,D_{\rm C}/D_{\rm H}\right] & {\rm for}~\Omega_k<0
+\end{array}
+\right.
+\end{equation}
+
+ At high redshifts, the angular diameter
+distance is such that 1 arcsec is on the order of 5 kpc.
+
+\section{Luminosity distance}
+
+The {\it luminosity distance} $D_{\rm L}$ is defined by the
+relationship between bolometric (ie, integrated over all frequencies)
+flux $S$ and bolometric luminosity $L$:
+$$
+D_{\rm L}\equiv \sqrt{\frac{L}{4\pi\,S}}
+$$
+
+It can be shown (Dodelson "Modern cosmology", S 2.2, pp. 34-36) that luminosity distance is related to the transverse comoving distance
+and angular diameter distance by
+$$
+D_{\rm L} = (1+z)\,D_{\rm M} = (1+z)^2\,D_{\rm A}
+$$
+
+  The latter
+relation implies that the surface brightness, $S$, of a
+receding object of luminosity $L$ that subtends a given solid angle $\Omega$ will decrease with increasing redshift as $S=\Omega^{-1} L/D_{\rm L}^2\propto 1/[(1+z)^4D_{\rm A}^2]\propto 1/[(1+z)^4D^2]$, where $D^2=D_{\rm A}^2\Omega$ is proper area of the object. This is known as $(1+z)^4$ {\it cosmological surface brightness dimming\/} and is one of the main factors it makes it difficult to observe galaxies at high redshifts (even though their sizes do not change much). 
+
+
+If the concern is not with bolometric quantities but rather with
+differential flux $S_{\nu}$ and luminosity $L_{\nu}$, as is usually
+the case in astronomy, then a correction, the {\it $k$-correction},
+must be applied to the flux or luminosity because the redshifted
+object is emitting flux in a different band than that in which you are
+observing.  The k-correction depends on the spectrum of the object in
+question, and is unnecessary only if the object has spectrum
+$\nu\,L_{\nu}={\rm constant}$.  For any other spectrum the
+differential flux $S_{\nu}$ is related to the differential luminosity
+$L_{\nu}$ by
+\begin{equation}
+S_{\nu} = (1+z)\,\frac{L_{(1+z)\nu}}{L_{\nu}}\,\frac{L_{\nu}}{4\pi\,D_{\rm L}^2}
+\end{equation}
+where $z$ is the redshift, the ratio of luminosities equalizes the
+difference in flux between the observed and emitted bands, and the
+factor of $(1+z)$ accounts for the redshifting of the bandwidth.
+Similarly, for differential flux per unit wavelength,
+\begin{equation}
+S_{\lambda} = \frac{1}{(1+z)}\,\frac{L_{\lambda/(1+z)}}{L_{\lambda}}\,
+\frac{L_{\lambda}}{4\pi\,D_{\rm L}^2}.
+\end{equation}
+
+\section{Apparent and absolute magnitudes and $k$-correction}
+\label{sec:mML}
+
+The {\em apparent magnitude\/} $m$ of an astronomical source in a
+photometric bandpass is defined to be the ratio of the apparent flux
+of that source to the apparent flux of the bright reference stars through
+that bandpass.  The
+{\em distance modulus\/} $DM$ is defined by
+\begin{equation}
+DM\equiv 5\,\log \left(\frac{D_{\rm L}}{10~{\rm pc}}\right)
+\end{equation}
+because it is the magnitude difference between an object's observed
+bolometric flux and what it would be if it were at $10~{\rm pc}$ (this
+was once thought to be the distance to Vega which was the most commonly used standard star until recently).  
+
+The absolute magnitude $M$ is the
+astronomer's measure of luminosity, defined to be the apparent
+magnitude the object in question would have if it were at 10~pc, so
+\begin{equation}
+m=M+DM+K(z)
+\label{eq:mM}
+\end{equation}
+where $K$ is the so called {\it $k$-correction}:
+\begin{equation}
+K(\lambda_0) = 2.5\,\log \left[(1+z)\,\frac{\int_0^{\infty} f(\lambda_0) S(\lambda)d\lambda}{\int_0^\infty f[\lambda_0/(1+z)]S(\lambda)d\lambda}\right],
+\label{eq:kcorr}
+\end{equation}
+where $\lambda_0$ is the wavelength of the filter at $z_0$ to which we would like to correct the magnitudes (\href{http://adsabs.harvard.edu/abs/1968ApJ...154...21O}{\citealt{oke_sandage68}},  see \S 4 in \href{http://adsabs.harvard.edu/abs/2007AJ....133..734B}{\citealt{blanton_roweis07}} for a more complete treatment).
+
+Given the galaxy absolute magnitude $M_{\rm f}$ estimated for a given filter using equations above, we can compute galaxy luminosity in units of solar luminosity in the same filter as 
+\begin{equation}
+L_{\rm f} = 10^{0.4(M_{\odot,\rm f}-M_{\rm f})},
+\label{eq:LMf}
+\end{equation}
+where $M_{\odot,\rm f}$ is the absolute magnitude of the Sun in the same band (see, e.g., eq. 14 in \href{http://adsabs.harvard.edu/abs/2003ApJ...592..819B}{\citealt{blanton_etal03}} for the SDSS bands and \href{http://mips.as.arizona.edu/~cnaw/sun.html}{here} for many other commonly used bands).
+
+\section{Surface brightness}
+\label{sec:surface_brightness}
+If a given patch in a galaxy at redshift $z$ has the surface brightness $S_b$ in some band $b$ in units of $L_{\odot,b}\,\mathrm{pc}^{-2}$ (where $L_{\odot,b}$ is Sun's luminosity in the same band) in the small angle approximation the luminosity of the patch corresponding to the solid angle of $1\ \mathrm{arcsec}^2$ will be $L_1=S_b\,\Omega_1 D_{\rm A}^2(z)$, where $\Omega_1=2.35044\times 10^{-11}$ is the solid angle in steradians corresponding to one square arcsecond. 
+
+The absolute magnitude of the galaxy will be 
+\begin{equation}
+M_b=M_{\odot,b}-2.5\log_{10}\frac{L_1}{L_{\odot,b}}=M_{\odot,b}-2.5\log_{10}S_b-2.5\log_{10}\Omega_1-5\log_{10}D_{\rm A}(z)
+\end{equation}
+The apparent magnitude of such square arcsecond patch will then be
+\begin{equation}
+\mu_b = M_b+5\log_{10}D_{\rm L} - 5=
+M_{\odot,b}-2.5\log_{10}S_b-2.5\log_{10}\Omega_1-5+5\log_{10}\left(D_{\rm L}/D_{\rm A}
+\right)
+\end{equation}
+where $D_{\rm L}=D_{\rm A}(1+z)^2$  is luminosity distance. Substituting this and the value of $\Omega_1$ into the equation above gives expression for surface brightness in the same band $b$ in magnitudes per arcsecond square:
+\begin{equation}
+\mu_b = 21.5721 + M_{\odot,b}-2.5\log_{10}S_b+10\log_{10}(1+z),
+\label{eq:musb}
+\end{equation}
+where the last term represents the $(1+z)^4$ cosmological dimming. To use this equation we need to know Sun's absolute magnitude in different bands. You can find a useful compilation of these \underline{\href{http://www.ucolick.org/~cnaw/sun.html}{here}}.
+
+%-----------------------------
+\section{$h$-scalings}
+\label{sec:hscalings}
+%-----------------------------
+
+Astronomical literature contains ubiquitous $h$-scalings when specific values of different quantities, such as luminosities, are quoted (see, for example, Figure \ref{fig:lfmagdefs} in Ch. \ref{ch:overview}). The main reasons for scaling distance-dependent quantities with $h$ are that 1) distances for most galaxies are determined from their redshift and using cosmological distance-redshift relation involving the Hubble constant, $d\propto h^{-1}$, and 2) the fact that for a long time the Hubble constant was uncertain by a factor of two. Explicit scalings were thus meant to allow easy rescaling of quantities to a specific value of the Hubble constant. Although the rationale is much weakened by a much more accurate modern knowledge of $H_0$, the explicit scalings persist as uncertainty of $\sim 5-10\%$ in $h$ is still present and this uncertainty is  substantial for some quantities. 
+
+Here I review the main origin of such scalings for quantities for which they are most commonly quoted. 
+Luminosities of galaxies depend on measured flux, $f$, and inverse square of the distance, as discussed above. 
+Thus, the $h$-scaling of luminosity is $L\propto f d^{2}\propto h^{-2}$, while the absolute magnitude scales as $M\propto \ldots +5\log_{10}h$, so that absolute magnitudes are commonly plotted in units of $\mathrm{mag}-5\log_{10}h$. 
+
+Physical sizes or observables defined within a given aperture scale with $h$ 
+because distances are used to convert observed angular scale, $\theta$, to physical
+size within which an ``observable'' is defined, 
+$R=\theta d_A(z)\propto \theta h^{-1}$.
+Thus, if the total mass $M$ of a galaxy or galaxy cluster is measured using the hydrostatic equilibrium equation and measurement of the temperature of velocity dispersion profile, we have $M_{\rm HE}\propto \sigma R\ \mathrm{or}\ \propto T R\propto d_A\propto h^{-1}$. The same scaling is expected for the mass derived from the weak lensing shear profile measurements. 
+
+If the gas mass is measured from the X-ray flux from a volume
+$V\propto R^3\propto \theta^3d_A^3$, which scales as $f=L_{\rm X}/(4\pi
+d_L^2)\propto \rho_{\rm gas}^2 V/d_L^2\propto M_{\rm gas}^2/(Vd_L^2)\propto
+M_{\rm gas}^2/(\theta d_L^2 d_A^3)$ and where $f$ and $\theta$ are
+observables, gas mass then scales with distance as $M_{\rm gas}\propto d_L
+d_A^{3/2}\propto h^{5/2}$. This dependence can be exploited to
+constrain cosmological parameters, as in the case of X--ray
+measurements of gas fractions in clusters.  
+
+%------------------------------------
+\section{Comoving volume}
+\label{sec:Vcom}
+%------------------------------------
+
+The {\it comoving volume\/} $V_{\rm C}$ is the volume measure in which
+number densities of non-evolving objects locked into Hubble flow are
+constant with redshift.  It is the proper volume times three factors
+of the relative scale factor now to then, or $(1+z)^3.$
+
+Given that the
+derivative of comoving distance with redshift is $1/E(z)$, the angular diameter distance converts a solid angle
+$d\Omega$ into a proper area, and two factors of $(1+z)$ convert a
+proper area into a comoving area, the comoving volume element in solid
+angle $d\Omega$ and redshift interval $dz$ is
+\begin{equation}
+dV_{\rm C}= D_{\rm H}\,\frac{(1+z)^2\,D_{\rm A}^2}{E(z)}\,d\Omega\,dz
+\end{equation}
+
+The integral of the comoving volume element
+from the present to redshift $z$ gives the total comoving volume,
+all-sky, out to redshift $z$
+\begin{equation}
+V_{\rm C} = \left\{
+\begin{array}{ll}
+  \left(\frac{4\pi\,D_{\rm H}^3}{2\,\Omega_k}\right)\,
+  \left[\frac{D_{\rm M}}{D_{\rm H}}\,
+  \sqrt{1+\Omega_k\,\frac{D_{\rm M}^2}{D_{\rm H}^2}}
+  -\frac{1}{\sqrt{|\Omega_k|}}\,
+  {\rm arcsinh}\left(\sqrt{|\Omega_k|}\,\frac{D_{\rm M}}{D_{\rm H}}\right)\right]
+  & {\rm for}~\Omega_k>0 \\
+  \frac{4\pi}{3}\,D_{\rm M}^3
+  & {\rm for}~\Omega_k=0 \\
+  \left(\frac{4\pi\,D_{\rm H}^3}{2\,\Omega_k}\right)\,
+  \left[\frac{D_{\rm M}}{D_{\rm H}}\,
+  \sqrt{1+\Omega_k\,\frac{D_{\rm M}^2}{D_{\rm H}^2}}
+  -\frac{1}{\sqrt{|\Omega_k|}}\,
+  {\rm arcsin}\left(\sqrt{|\Omega_k|}\,\frac{D_{\rm M}}{D_{\rm H}}\right)\right]
+  & {\rm for}~\Omega_k<0
+\end{array}
+\right.
+\end{equation}
+\citet{carroll_etal92}. The comoving volume element and its
+integral are both used frequently in predicting number counts or
+luminosity densities.
+
+\section{Lookback time}
+
+The {\it lookback time\/} $t_{\rm L}$ to an object is the difference
+between the age $t_{\rm o}$ of the Universe now (at observation) and
+the age $t_{\rm e}$ of the Universe at the time the photons were
+emitted (according to the object).  It is used to predict properties
+of high-redshift objects with evolutionary models, such as passive
+stellar evolution for galaxies.  Recall that $E(z)$ is the time
+derivative of the logarithm of the scale factor $a(t)$; the scale
+factor is proportional to $(1+z)$, so the product $(1+z)\,E(z)$ is
+proportional to the derivative of $z$ with respect to the lookback
+time, or
+\begin{equation}
+t_{\rm L} = t_{\rm H}\,\int_0^z \frac{dz'}{(1+z')\,E(z')}
+\end{equation}
+\citet[e.g.,][pp 313-315]{peebles93} and \citet[][pp 52-56]{kolb_turner90} give some
+analytic solutions to this equation, but they are concerned with the
+age $t(z)$, so they integrate from $z$ to $\infty$). 
+
+

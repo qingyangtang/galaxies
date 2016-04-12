@@ -1,0 +1,31 @@
+
+%-----------------------------------
+\chapter{{\tt python} info}
+%-----------------------------------
+
+%------------------------------------------
+\section{{\tt Ipython} notebooks}
+%-----------------------------------------
+
+I will be using IPython Notebooks to supplement whatever I show in class. These can be viewed, edited, and produced with IDE editors of the main python distros (Enthought or Anaconda).\footnote{Note that you can request a free Enthought academic license which will allow you to get distribution with many add-ons and libraries}  Also, I recommend the {\tt PyCharm} IDE environment\footnote{\href{https://www.jetbrains.com/pycharm/}{https://www.jetbrains.com/pycharm/}} for code development, which can be obtained free for academic users. 
+
+If you don't have a python distribution installed on your machine, please do so asap. The rationale for using Notebooks can be found \href{http://pgbovine.net/ipython-notebook-first-impressions.htm}{\underline{here}} - it simplifies work flow and closely connects plots that we will be discussing with the code that produces them. You can use these codes as a starting point for your own experimentation with data or calculations. 
+
+To run examples presented here, you will need to install python (Enthought or Anaconda distributions) with standard libraries (matplotlib, numpy, scipy, etc). In addition, make sure you have pyfits installed for reading FITS files. The FITS file with the SDSS data will be distributed (also I will distribute SQL script that was used to query SDSS DR8 to produce it). 
+
+%------------------------------------------
+\section{{\tt colossus}}
+%-----------------------------------------
+
+For cosmological functions, such as distances, we will use the \href{http://www.benediktdiemer.com/code/}{{\tt colossus} package} written by Benedikt Diemer. We will also use it when we explore properties of dark matter halo profiles. You can install it by
+\begin{lstlisting}
+pip install https://bitbucket.org/bdiemer/colossus/get/tip.tar.gz
+or
+easy_install https://bitbucket.org/bdiemer/colossus/get/tip.tar.gz
+\end{lstlisting}
+
+%------------------------------------------
+\section{{\tt AstroML}}
+%-----------------------------------------
+
+We will also use some functions and examples from the \href{https://pypi.python.org/pypi/astroML/}{AstroML python library}, especially when we will come to more sophisticated analyses, such as clustering. This library was developed to support the book \href{http://press.princeton.edu/titles/10159.html}{''Statistics, Data Mining, and Machine Learning in Astronomy''} \citep{ivezic_etal13}. The book itself is not needed for this course, although I will draw on it in parts of the course. It is very good though and I highly recommend to get and study it (it is not available in our library yet, unfortunately, but many of your fellow graduate students already have it). In any case, all of the figures from the book and the python code used to produce them is available online \href{http://www.astroml.org/book_figures/index.html}{here}. 

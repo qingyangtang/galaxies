@@ -1,0 +1,153 @@
+% references.sty - make AASMS style references.
+%   (clipped from aasms.sty)
+\def\references{\clearpage\subsection*{References cited}
+    \bgroup\parindent=\z@\parskip=\itemsep
+    \def\refpar{\par\hangindent=3em\hangafter=1}}
+\def\endreferences{\refpar\egroup}
+
+\def\thebibliography{\clearpage\section*{References cited}
+    \list{\null}{\leftmargin 3em\labelwidth\z@\labelsep\z@\itemindent -3em
+    \usecounter{enumi}}
+    \def\refpar{\relax}
+    \def\newblock{\hskip .11em plus .33em minus .07em}
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=1000\relax}
+\def\endthebibliography{\endlist}
+
+\def\thebibsamepage{\subsection*{References cited}
+    \list{\null}{\leftmargin 3em\labelwidth\z@\labelsep\z@\itemindent -3em
+    \usecounter{enumi}}
+    \def\refpar{\relax}
+    \def\newblock{\hskip .11em plus .33em minus .07em}
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=1000\relax}
+\def\endthebibsamepage{\endlist}
+
+\def\@biblabel#1{\relax}
+%\def\@cite#1#2{({#1\if@tempswa , #2\fi})}
+\def\@cite#1#2{#1\if@tempswa , #2\fi}
+
+\def\reference{\relax\refpar}  % Generic: might be better...
+\def\markcite#1{#1\relax}
+
+% Modify \@citex so that individual citation texts are NOT hboxed.
+% This allows TeX to break lines at spaces between words in citations.
+% Remove the obnoxious {\bf ?} that was inserted in the text when
+% undefined citations are encountered; here, the warning message is
+% printed only on the terminal.
+
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@cite{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{,\penalty\@m\ }\@ifundefined
+       {b@\@citeb}{\@warning
+       {Citation `\@citeb' on page \thepage \space undefined}}%
+{\csname b@\@citeb\endcsname}}}{#1}}
+
+%  ****************************************
+%  *            ABBREVIATIONS             *
+%  ****************************************
+
+% Abbreviations for journals.  The object here is to provide authors
+% with convenient shorthands for the most "popular" (often-cited)
+% journals; the author can use these markup tags without being concerned
+% about the exact form of the journal abbreviation, or its formatting.
+% It is up to the keeper of the macros to make sure the macros expand
+% to the proper text.  If macro package writers agree to all use the
+% same TeX command name, authors only have to remember one thing, and
+% the style file will take care of editorial preferences.  This also
+% applies when a single journal decides to revamp its abbreviating
+% scheme, as happened with the ApJ (Abt 1991).
+
+\let\jnl@style=\rm
+\def\ref@jnl#1{{\jnl@style#1}}
+
+\def\aj{\ref@jnl{AJ}}			% Astronomical Journal
+\def\araa{\ref@jnl{ARA\&A}}		% Annual Review of Astron and Astrophys
+\def\apj{\ref@jnl{ApJ}}			% Astrophysical Journal
+\def\apjl{\ref@jnl{ApJ}}		% Astrophysical Journal, Letters
+\def\apjs{\ref@jnl{ApJS}}		% Astrophysical Journal, Supplement
+\def\aprop{IEEE Trans.\ Antennas Propag.\ }
+\def\ao{\ref@jnl{Appl.Optics}}		% Applied Optics
+\def\apss{\ref@jnl{Ap\&SS}}		% Astrophysics and Space Science
+\def\aap{\ref@jnl{A\&A}}		% Astronomy and Astrophysics
+\def\aapr{\ref@jnl{A\&A~Rev.}}		% Astronomy and Astrophysics Reviews
+\def\aaps{\ref@jnl{A\&AS}}		% Astronomy and Astrophysics, Supplement
+\def\azh{\ref@jnl{AZh}}			% Astronomicheskii Zhurnal
+\def\ap{Appl.\  Phys.\ }
+\def\apl{Appl.\ Phys.\ Lett.\ }
+\def\assp{IEEE Trans.\ Acoust.\ Speech Signal Process.\ }
+\def\baas{\ref@jnl{BAAS}}		% Bulletin of the AAS
+\def\bell{Bell Syst.\ Tech.\ J.\ }
+\def\iovs{Invest.\ Ophthalmol.\ Vis.\ Sci.\ }
+\def\jcp{J.\ Chem.\ Phys.\ }
+\def\jmo{J.\ Mod.\ Opt.\ }
+\def\josa{J.\ Opt.\ Soc.\ Am.\ }
+\def\josaa{J.\ Opt.\ Soc.\ Am.\ A }
+\def\josab{J.\ Opt.\ Soc.\ Am.\ B }
+\def\jpp{J.\ Phys.\ (Paris) }
+\def\jqe{IEEE J.\ Quantum Electron.\ }
+\def\jrasc{\ref@jnl{JRASC}}		% Journal of the RAS of Canada
+\def\memras{\ref@jnl{MmRAS}}		% Memoirs of the RAS
+\def\mnras{\ref@jnl{MNRAS}}		% Monthly Notices of the RAS
+\def\mtt{IEEE Trans.\ Microwave Theory Tech.\ }
+\def\nat{Nature (London) }
+\def\oc{Opt.\ Commun.\ }
+\def\ol{Opt.\ Lett.\ }
+\def\pl{Phys.\ Lett.\ }
+\def\pra{\ref@jnl{Phys.Rev.A}}		% Physical Review A: General Physics
+\def\prb{\ref@jnl{Phys.Rev.B}}		% Physical Review B: Solid State
+\def\prc{\ref@jnl{Phys.Rev.C}}		% Physical Review C
+\def\prd{\ref@jnl{Phys.Rev.D}}		% Physical Review D
+\def\prl{\ref@jnl{Phys.Rev.Lett}}	% Physical Review Letters
+\def\pasp{\ref@jnl{PASP}}		% Publications of the ASP
+\def\pasj{\ref@jnl{PASJ}}		% Publications of the ASJ
+\def\pspie{Proc.\ Soc.\ Photo-Opt.\ Instrum.\ Eng.\ }
+\def\qjras{\ref@jnl{QJRAS}}		% Quarterly Journal of the RAS
+\def\sjqe{Sov.\ J.\ Quantum Electron.\ }
+\def\skytel{\ref@jnl{S\&T}}		% Sky and Telescope
+\def\solphys{\ref@jnl{Solar~Phys.}}	% Solar Physics
+\def\sovast{\ref@jnl{Soviet~Ast.}}	% Soviet Astronomy
+\def\ssr{\ref@jnl{Space~Sci.Rev.}}	% Space Science Reviews
+\def\vr{Vision Res.\ }
+\def\zap{\ref@jnl{ZAp}}			% Zeitschrift fuer Astrophysik
+
+
+
+\let\astap=\aap
+\let\apjlett=\apjl
+\let\apjsupp=\apjs
+
+%  ****************************************
+%  *            MISCELLANEOUS             *
+%  ****************************************
+
+% Handy little things everybody works out for themselves anyway.  Many
+% of these come from Springer's A&A package, and some were contributed
+% by Francois Schweizer at DTM.  You can go berserk making these up,
+% especially when you start getting into the composite ones.  We have
+% tried to select a tractable number that were useful, and somewhat
+% difficult to get right because fussy kerning or some such is required.
+% Most can be used in or out of math mode with impunity; \alt and \agt
+% are relations and can only be used in math mode.
+
+\def\deg{\hbox{$^\circ$}}
+\def\sun{\hbox{$\odot$}}
+\def\earth{\hbox{$\oplus$}}
+\def\lesssim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
+\def\gtrsim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
+\def\sq{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+\def\arcmin{\hbox{$^\prime$}}
+\def\arcsec{\hbox{$^{\prime\prime}$}}
+\def\fd{\hbox{$.\!\!^{\rm d}$}}
+\def\fh{\hbox{$.\!\!^{\rm h}$}}
+\def\fm{\hbox{$.\!\!^{\rm m}$}}
+\def\fs{\hbox{$.\!\!^{\rm s}$}}
+\def\fdg{\hbox{$.\!\!^\circ$}}
+\def\farcm{\hbox{$.\mkern-4mu^\prime$}}
+\def\farcs{\hbox{$.\!\!^{\prime\prime}$}}
+\def\fp{\hbox{$.\!\!^{\scriptscriptstyle\rm p}$}}
+\def\micron{\hbox{$\mu$m}}
+\def\icm{${\rm cm}^{-1}$}
+\def\etal{{\it et~al.}}
+
+

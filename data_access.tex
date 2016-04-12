@@ -1,0 +1,37 @@
+%-----------------------------------
+\chapter{Data access info}
+%-----------------------------------
+
+%-------------------------------------------------------
+\section{SDSS DR8 main galaxy sample}
+%-------------------------------------------------------
+ For many exercises here and subsequent lectures we will be using SDSS data. The binary FITS file used in the explorations below can be downloaded \href{http://astro.uchicago.edu/~andrey/classes/a304s15/data/sdss_dr8/SDSSspecgalsDR8.fit}{here} (it is 165 Mb). It was produced at the SDSS \href{http://skyserver.sdss.org/CasJobs/}{CasJobs server} where time-intensive SQL queries can be submitted. The FITS file used below is large because it includes a number of properties that will be useful in our explorations and because it selects almost all low-$z$ galaxies from the SDSS (called the main galaxy sample, to differentiate from the quasar and LRG samples). 
+
+The SQL script used to produce the FITS file below can be found \href{http://astro.uchicago.edu/~andrey/classes/a304s15/data/sdss_dr8/README.txt}{here}. Description of various entries for SDSS objects classified as GALAXY in DR8 can be found \href{http://skyserver.sdss.org/dr8/en/help/browser/browser.asp?n=Galaxy&t=U}{here}, for STAR objects see \href{http://skyserver.sdss.org/dr8/en/help/browser/description.asp?n=Star&t=V}{here}, while QSOs are \href{}{here}. If you have not queried SDSS data base yet, I encourage you to use this example, to create your own queries for particular properties. 
+
+\subsection{Petrosian magnitudes and sizes}
+\label{sec:petromagsize}
+
+In \S \ref{sec:apermags} we discussed the \citet{petrosian76} definition of the galaxy magnitude and size and the specific implementation of this definition in the SDSS  (see \href{http://skyserver.sdss.org/dr1/en/help/docs/algorithm.asp?key=mag_petro}{here} for more details) computes the following function as a function of angular radius, $R$, from galaxy center:
+\begin{equation}
+\eta(R)\equiv\frac{\int_{0.8R}^{1.25R}dR^\prime 2\pi R^\prime \Sigma(R^\prime)/[\pi(1.25^2-0.8^2)R^2]}{\int^R_02\pi R^\prime \Sigma(R^\prime) dR^\prime/(\pi R^{2})}
+\label{eq:Rpetro}
+\end{equation}
+where $\Sigma(r)$ is the surface brightness profile. The {\it Petrosian radius,\/} $R_{\rm P}$, is then defined by the SDSS pipeline as the radius where $\eta(R_{\rm P})=0.2$.
+Galaxy flux is then measured within some multiple of $R_{\rm P}$:
+\begin{equation}
+F_{\rm P}\equiv \int^{N_{\rm P}R_{\rm P}}_0 2\pi R^\prime I(R^\prime)dR^\prime
+\label{eq:fPetro}
+\end{equation}
+The aperture $2R_{\rm P}$ used in the SDSS measurements. 
+
+The choices for $\eta$ and $N_{\rm P}$ are heuristic. It  is argued to be large enough to contain nearly all of the flux for many galaxies (in particular late type galaxies described by the exponential profile), but small enough that the sky noise is sub-dominant in $F_{\rm P}$. In this case, even substantial errors in $R_{\rm P}$ cause only small errors in the Petrosian flux (typical statistical errors near the spectroscopic flux limit of $r \sim 17.7$ are $< 5\%$). The 
+ main draw of the Petrosian's definition, however, is that the fraction of recovered light is robust and depend  only weakly on the galaxy axis ratio or size variation due to worse seeing or greater distance \href{http://adsabs.harvard.edu/abs/2001AJ....121.2358B}{\citep[e.g.,][]{blanton_etal01}}. 
+
+The Petrosian radius in each band is the parameter {\tt petroRad} in the database with the subscript corresponding to 
+particular filter (e.g., for $r$-band, {\tt petroRad\_r}) and the Petrosian magnitude in each band (calculated using only petroRad for the $r$ band) is the parameter petroMag (e.g., for $r$-band, {\tt petroMag\_r}) . 
+
+SDSS main galaxy sample  also provides radii enclosing 50\% and 90\% of the total light of the Petrosian magnitude (e.g., {\tt petroR50\_r} and {\tt petroR90\_r} for the $r$ band). 
+
+\subsection{cmodel magnitudes}
+\label{sec:cmodelmag}

@@ -1,0 +1,148 @@
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+%\usepackage{references}
+%\usepackage{natbib209}
+\pagestyle{fancy}
+\headheight 35pt 
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\setlength{\topmargin}{-0.75in}
+\setlength{\headheight}{1.0cm}
+\setlength{\headwidth}{\textwidth}
+\setlength{\headsep}{0.5cm}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\footskip}{0.7cm}
+
+\def\textfraction{0.07}
+\def\floatpagefraction{0.93}
+
+\fancyhead{}
+\fancyfoot{}
+%\lhead[{\sffamily{\bfseries\thepage}%
+%                   \hfill Simulations of structure formation}]{}
+\lhead[{\sffamily{\bfseries\thepage}}%
+                   \hfill {\sffamily\nouppercase{\rightmark}}]{}
+\rhead[]{\sffamily\nouppercase{\leftmark}%
+                   \hfill {\bfseries\thepage}}
+%\citestyle{aa}
+
+% redefine vector command
+\renewcommand{\vec}[1]{{\boldsymbol{#1}}}
+
+%------------------------------
+% some shorthand definitions
+%-----------------------------
+
+\def\Msun{\rm M_{\odot}}
+\def\hMsun{h^{-1}\rm\,M_{\odot}}
+\def\Mvir{M_{\rm vir}}
+\def\Np{N_{\rm p}}
+\def\Lbox{L_{\rm box}}
+\def\Vbox{V_{\rm box}}
+\def\kNy{k_{\rm Ny}}
+
+\def\dim#1{\mbox{\,#1}}
+
+\def\subem{m}
+\def\subbe{b}
+\def\Om{\Omega_\subem}
+\def\Ob{\Omega_\subbe}
+\def\Ol{\Omega_\Lambda}
+\def\Ok{\Omega_K}
+\def\Or{\Omega_R}
+
+\def\aeq{a_{\rm eq}}
+
+\def\imath{{\mathsf i}}
+
+
+\def\refjnl#1{{\rmfamily#1}}%
+\newcommand\aj{\refjnl{AJ}}%
+          % Astronomical Journal
+\newcommand\araa{\refjnl{ARA\&A}}%
+          % Annual Review of Astron and Astrophys
+\newcommand\apj{\refjnl{ApJ}}%
+          % Astrophysical Journal
+\newcommand\apjl{\refjnl{ApJ}}%
+          % Astrophysical Journal, Letters
+\newcommand\apjs{\refjnl{ApJS}}%
+          % Astrophysical Journal, Supplement
+\newcommand\apss{\refjnl{Ap\&SS}}%
+          % Astrophysics and Space Science
+\newcommand\aap{\refjnl{A\&A}}%
+          % Astronomy and Astrophysics
+\newcommand\aapr{\refjnl{A\&A~Rev.}}%
+          % Astronomy and Astrophysics Reviews
+\newcommand\azh{\refjnl{AZh}}%
+          % Astronomicheskii Zhurnal
+\newcommand\mnras{\refjnl{MNRAS}}%
+          % Monthly Notices of the RAS
+\newcommand\na{\refjnl{New A}}%
+  % New Astronomy
+\newcommand\nar{\refjnl{New A Rev.}}%
+  % New Astronomy Review
+\newcommand\pra{\refjnl{Phys.~Rev.~A}}%
+          % Physical Review A: General Physics
+\newcommand\prb{\refjnl{Phys.~Rev.~B}}%
+          % Physical Review B: Solid State
+\newcommand\prc{\refjnl{Phys.~Rev.~C}}%
+          % Physical Review C
+\newcommand\prd{\refjnl{Phys.~Rev.~D}}%
+          % Physical Review D
+\newcommand\pre{\refjnl{Phys.~Rev.~E}}%
+          % Physical Review E
+\newcommand\prl{\refjnl{Phys.~Rev.~Lett.}}%
+          % Physical Review Letters
+\newcommand\pasp{\refjnl{PASP}}%
+          % Publications of the ASP
+\newcommand\pasj{\refjnl{PASJ}}%
+          % Publications of the ASJ
+\newcommand\pasa{\refjnl{PASA}}%
+          % Publications of the ASA
+\newcommand\sovast{\refjnl{Soviet~Ast.}}%
+          % Soviet Astronomy
+\newcommand\ssr{\refjnl{Space~Sci.~Rev.}}%
+          % Space Science Reviews
+\newcommand\nat{\refjnl{Nature}}%
+          % Nature
+\newcommand\jcp{\refjnl{J.~Comp.~Phys.}}%
+          % Journal of Computational Physics
+
+
+% code names
+\def\P3M{P$^3$M}
+
+%\def\grtsim {\lower .1ex\hbox{\rlap{\raise .6ex\hbox{\hskip .3ex
+%       {\ifmmode{\scriptscriptstyle >}\else
+%                {$\scriptscriptstyle >$}\fi}}}
+%        \kern -.4ex{\ifmmode{\scriptscriptstyle \sim}\else
+%                {$\scriptscriptstyle\sim$}\fi}}}
+%\def\lesssim {\lower .1ex\hbox{\rlap{\raise .6ex\hbox{\hskip .3ex
+%        {\ifmmode{\scriptscriptstyle <}\else
+%                {$\scriptscriptstyle <$}\fi}}}
+%        \kern -.4ex{\ifmmode{\scriptscriptstyle \sim}\else
+%                {$\scriptscriptstyle\sim$}\fi}}}
+
+
+\usepackage{wrapfig} 
+\usepackage{framed}
+%\usepackage{color}
+%\definecolor{shadecolor}{gray}{0.0}
+
+
+\def\toolbox#1#2{\wrapfloat{minipage}{#1}{#2}\begin{framed}}
+\def\endtoolbox{\end{framed}\endwrapfloat}
+
+%
+%  Implementing pseudo-code snippets
+%
+\def\fname#1{{\bf #1}}
+\def\fcall#1#2#3{{\fname{#1}{\tt [In:#2;Out:#3]}}}
+\def\algorithm#1#2#3{\begin{leftbar}{\tt procedure \fcall{#1}{#2}{#3}}\sl\begin{enumerate}}
+\def\endalgorithm{\end{enumerate}\end{leftbar}}
+
+
+%\def\citet#1{\note{Author names go here}\cite{#1}}
+%\def\citep#1{\cite{#1}}
+
