@@ -2,6 +2,24 @@ import os
 import numpy as np
 from setup import setup
 
+def read_sdss_fits(data_file=None):
+    """Loader for SDSS Galaxies w
+    
+    Returns
+    -------
+    data : recarray, shape = (327260,)
+        record array containing pipeline parameters
+
+
+    """
+    # pyfits is an optional dependency: don't import globally
+    import pyfits
+
+    if not os.path.exists(data_file):
+        print "***error! data file",data_file," does not exist!"
+        return 0
+    hdulist = pyfits.open(data_file)
+    return np.asarray(hdulist[1].data)
 
 def read_meert_catalog(phot_type=None):
     """Loader for the Meert et al. 2015 catalog of improved photometric measurements
@@ -19,17 +37,21 @@ def read_meert_catalog(phot_type=None):
     datadir = data_home_dir()
     datameertnonpar = datadir+'/Meert2015_v2/UPenn_PhotDec_nonParam_rband.fits'
     datameertnonparg = datadir+'/Meert2015_v2/UPenn_PhotDec_nonParam_gband.fits'
+    datameertnonpari = datadir+'/Meert2015_v2/UPenn_PhotDec_nonParam_iband.fits'
     datameert = datadir+'/Meert2015_v2/UPenn_PhotDec_Models_rband.fits'
     datasdss = datadir+'/Meert2015_v2/UPenn_PhotDec_CAST.fits'
     datasdssmodels = datadir+'/Meert2015_v2/UPenn_PhotDec_CASTmodels.fits'
     datameertg = datadir+'/Meert2015_v2/UPenn_PhotDec_Models_gband.fits'
+    datameerti = datadir+'/Meert2015_v2/UPenn_PhotDec_Models_iband.fits'
     datamorph = datadir+'/Meert2015_v2/UPenn_PhotDec_H2011.fits' # morphology probabilities from Huertas-Company et al. 2011
 
     # mdata tables: 1=best fit, 2=deVaucouleurs, 3=Sersic, 4=DeVExp, 5=SerExp
     mdata = pyfits.open(datameert)[phot_type].data
     mdatag = pyfits.open(datameertg)[phot_type].data
+    mdatai = pyfits.open(datameerti)[phot_type].data
     mnpdata = pyfits.open(datameertnonpar)[1].data
     mnpdatag = pyfits.open(datameertnonparg)[1].data
+    mnpdatai = pyfits.open(datameertnonpari)[1].data
     sdata = pyfits.open(datasdss)[1].data
     phot_r = pyfits.open(datasdssmodels)[1].data
     morph = pyfits.open(datamorph)[1].data
@@ -47,23 +69,24 @@ def read_meert_catalog(phot_type=None):
              (mdata['m_tot'] > 0) & (mdata['m_tot'] < 100) &
              (isset(fflag, 1) | isset(fflag, 4) | isset(fflag, 10) | isset(fflag, 14))]
 
-    sdata = sdata[igood]; phot_r = phot_r[igood]; mdata = mdata[igood]
-    mnpdata = mnpdata[igood]; mdatag = mdatag[igood]; mnpdatag = mnpdatag[igood]; morph = morph[igood]
+    sdata = sdata[igood]; phot_r = phot_r[igood]; mdata = mdata[igood]; mdatai = mdatai[igood] 
+    mnpdata = mnpdata[igood]; mdatag = mdatag[igood]; mnpdatag = mnpdatag[igood]; morph = morph[igood]; mnpdatai = mnpdatai[igood]; 
 
-    return sdata, mdata, mnpdata, phot_r, mdatag, mnpdatag, morph
+    return sdata, mdata, mnpdata, phot_r, mdatag, mnpdatag, morph, mdatai, mnpdatai
 
 def read_alfalfa(aafile):
     """ read ALFALFA catalog data file from: 
         http://egg.astro.cornell.edu/alfalfa/data/a40files/a40.datafile1.txt
     """ 
     ancat = []; aname = []; vhelio = []; w50 = []; ew50 = []; HIflux = []; eHIflux = []
-    dist = []; lMHI = []
+    dist = []; lMHI = []; HIcode = []; Ocode = [];
     with open(aafile) as input_file:
         lines = input_file.readlines()
         for line in lines[84:]:
             ancatd  = line[0:6]; anamed = line[7:16]
             vheliod = line[48:53]; w50d = line[54:57]; ew50d = line[58:61]
             HIfluxd = line[63:70]; eHIfluxd = line[71:75]
+            HIcoded = line[102:103]; Ocoded = line[104:105]
             # handle missing distances and masses 
             if line[90:95] == '     ':
                 distd = -1000.0; lMHId = -1000.0
@@ -73,17 +96,19 @@ def read_alfalfa(aafile):
             ancat.append(ancatd); aname.append(anamed)
             vhelio.append(vheliod); w50.append(w50d); ew50.append(ew50d)
             HIflux.append(HIfluxd); eHIflux.append(eHIfluxd); 
-            dist.append(distd); lMHI.append(lMHId)
+            dist.append(distd); lMHI.append(lMHId); HIcode.append(HIcoded); Ocode.append(Ocoded)
             
-    aalist = np.zeros((len(ancat),), dtype = [('AGCnr','i6'),('Name','a8'),
-                      ('Vhelio','i5'),('W50','i3'),('errW50','i3'),
-                      ('HIflux','f7'),('errHIflux','f4'),('Dist','f5'),
-                      ('logMsun','f5')])
+    aalist = np.zeros((len(ancat),), dtype = [('AGCnr','i8'),('Name','a8'),
+                      ('Vhelio','i8'),('W50','i8'),('errW50','i8'),
+                      ('HIflux','f8'),('errHIflux','f8'),('Dist','f8'),
+                      ('logMsun','f8'),('HIcode','i8'),('Ocode','a8') ])
     aalist['AGCnr'] = np.array(ancat); aalist['Name'] = np.array(aname); 
     aalist['Vhelio'] = np.array(vhelio); aalist['W50'] = np.array(w50); aalist['errW50'] = np.array(ew50);
     aalist['HIflux'] = np.array(HIflux); aalist['errHIflux'] = np.array(eHIflux);
     aalist['Dist'] = np.array(dist); 
     aalist['logMsun'] = np.array(lMHI)
+    aalist['HIcode'] = np.array(HIcode)
+    aalist['Ocode'] = np.array(Ocode)
 
     return aalist
 
@@ -107,14 +132,15 @@ def read_alfalfa_sdss_crosslist(aasfile):
                 zsdssd = float(line[61:68]) 
             ezsdssd = line[69:76]
             ancats.append(ancatsd); sdss_photo_objID.append(sdss_photoid); sdss_spec_objID.append(sdss_specid)
-            modelmag.append(modelmagd); ur.append(urcol); zsdss.append(zsdssd)         
+            modelmag.append(modelmagd); ur.append(urcol); zsdss.append(zsdssd) 
+            dummy = 0*zsdssd        
 
-    sdsslist = np.zeros((len(ancats),), dtype = [('AGCnr','i6'),('PhotoObjID','a18'),('SpectObjID','a18'),('rmodelmag','f5'),('uminusr','f5'),('zsdss','f7')])
+    sdsslist = np.zeros((len(ancats),), dtype = [('AGCnr','i6'),('PhotoObjID','a18'),('SpectObjID','a18'),('rmodelmag','f5'),('uminusr','f5'),('zsdss','f7'),('logMsun','f7')])
     sdsslist['AGCnr']=np.array(ancats); sdsslist['PhotoObjID']=np.array(sdss_photo_objID); sdsslist['SpectObjID']=np.array(sdss_spec_objID)
     sdsslist['rmodelmag'] = np.array(modelmag); 
     sdsslist['uminusr'] = np.array(ur); 
     sdsslist['zsdss'] = np.array(zsdss)
-    
+    sdsslist['logMsun'] = np.array(dummy)
     return sdsslist
 
 def alfalfa_sdss_crossmatch(aalist, sdsslist):
